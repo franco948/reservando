@@ -276,7 +276,7 @@ describe('Tests para la clase reserva', function() {
   beforeEach(function() {
     // Recordar que el mes, hora, minutos, segundos empiezan desde 0
     // El dia empieza desde 1
-    var reserva1 = new Reserva(new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"); // Descuento por grupo grande y codigo
+    var reserva1 = new Reserva(new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"); // Descuento por grupo grande y codigo y adicional por viernes
     var reserva2 = new Reserva(new Date(2018, 7, 27, 14, 100), 2, 150, "DES200"); // Descuento por codigo
     var reserva3 = new Reserva(new Date(2019, 9, 7, 11, 59), 2, 500, "DES15"); // Descuento por codigo
     var reserva4 = new Reserva(new Date(2019, 9, 7, 13, 01), 10, 100, ''); // Descuento por grupo grande
@@ -321,6 +321,6 @@ describe('Tests para la clase reserva', function() {
     });
   });
 
-  // TODO probar el resto de la funciones de la clase reserva
+  // TODO testear el resto de la funciones de la clase reserva
 });
 
