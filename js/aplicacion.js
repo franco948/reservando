@@ -144,7 +144,7 @@ Aplicacion.prototype.dibujarCiudades = function() {
     this.cargarOpcionDefault("filtro-ciudad", "Ciudad");
     this.cargarOpcionTodos("filtro-ciudad");
 
-    this.listado.obtC().forEach(function(ciudad) {
+    this.listado.obtenerUbicaciones().forEach(function(ciudad) {
         var nuevaOpcion = $("<option/>").text(ciudad).val(ciudad);
         nuevaOpcion.appendTo("#filtro-ciudad");
     });
