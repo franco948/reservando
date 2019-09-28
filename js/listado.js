@@ -35,25 +35,25 @@ Listado.prototype.obtenerUbicaciones = function() {
         ciudades.push(this.restaurantes[i].ubicacion);
     }
     //Se crea un nuevo array donde se van a agregar las ciudades pero sin repetirse
-    var ciudadesSinRepetirse = ciudades.filter(function(ciudad, index, lasCiudades) {
-        return index === lasCiudades.indexOf(ciudad);
+    var ciudadesSinRepetirse = ciudades.filter(function(ciudad, indiceDeLaCiudad, lasCiudades) {
+        return indiceDeLaCiudad === lasCiudades.indexOf(ciudad);
     });
 
     return ciudadesSinRepetirse.sort();
 }
 
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtC()
-Listado.prototype.obtR = function() {
-    var r = [];
+Listado.prototype.obtenerRubros = function() {
+    var rubros = [];
     for (var i = 0; i < this.restaurantes.length; i++) {
-        r.push(this.restaurantes[i].rubro);
+        rubros.push(this.restaurantes[i].rubro);
     }
 
-    var r2 = r.filter(function(elem, index, self) {
-        return index === self.indexOf(elem);
+    var rubrosSinRepetirse = rubros.filter(function(rubro, indiceDelRubro, losRubros) {
+        return indiceDelRubro === losRubros.indexOf(rubro);
     });
 
-    return r2.sort();
+    return rubrosSinRepetirse.sort();
 }
 
 //Obtiene todos los horarios de los restaurantes (sin repetidos). Está funcionalidad es un poco más compleja ya que un restaurante

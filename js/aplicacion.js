@@ -156,7 +156,7 @@ Aplicacion.prototype.dibujarRubros = function() {
     this.cargarOpcionDefault("filtro-rubro", "Rubro");
     this.cargarOpcionTodos("filtro-rubro")
 
-    this.listado.obtR().forEach(function(rubro) {
+    this.listado.obtenerRubros().forEach(function(rubro) {
         var nuevaOpcion = $("<option/>").text(rubro).val(rubro);
         nuevaOpcion.appendTo("#filtro-rubro");
     });
