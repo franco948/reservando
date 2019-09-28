@@ -1,4 +1,5 @@
 
+// TODO poner validaciones a la cantidad de personas y precio por persona
 var Reserva = function(horario, cantidadPersonas, precioPorPersona, codigoDescuento)
 {
     this.horario = horario;

@@ -308,9 +308,7 @@ describe('Tests para la clase reserva', function() {
   describe('Tests para la funcion calcularPrecioFinal', function() {
     it('Devuelve el precio final', function() {
       // ARRANGE
-      /* En la pagina web el precio final de la reserva 1 aparece como $2310, 
-      pero esto es erroneo porque calcula un 5% (que son $140)
-      de descuento de la franja horaria que no deberia */
+      /* En la pagina web el precio final de la reserva 1 aparece como $2310, pero no se a que se debe*/
       var preciosEsperados = [2450, 100, 850, 850, 1100, 
                               1100, 1050, 1050, 500, 500];
       var preciosActuales = [];      
@@ -322,5 +320,7 @@ describe('Tests para la clase reserva', function() {
       expect(preciosActuales).to.eql(preciosEsperados);
     });
   });
+
+  // TODO probar el resto de la funciones de la clase reserva
 });
 
