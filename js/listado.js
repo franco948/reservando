@@ -36,9 +36,8 @@ Listado.prototype.obtenerUbicaciones = function() {
     //Array donde se van a ir agregando las ciudades (van a estar repetidas)
     var ciudades = [];
     //Se recorre el array de restaurantes y se va agregando al array creado, todas las ubicaciones o ciudades encontradas
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        ciudades.push(this.restaurantes[i].ubicacion);
-    }
+    ciudades = this.restaurantes.map(restaurant => restaurant.ubicacion);
+
     //Se crea un nuevo array donde se van a agregar las ciudades pero sin repetirse
     var ciudadesSinRepetirse = eliminarRepetidos(ciudades);
 
@@ -48,9 +47,8 @@ Listado.prototype.obtenerUbicaciones = function() {
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtC()
 Listado.prototype.obtenerRubros = function() {
     var rubros = [];
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        rubros.push(this.restaurantes[i].rubro);
-    }
+    
+    rubros = this.restaurantes.map(restaurant => restaurant.rubro);
 
     var rubrosSinRepetirse = eliminarRepetidos(rubros);
 
@@ -64,9 +62,7 @@ Listado.prototype.obtenerHorarios = function() {
     //En este array se van a cargar los arrays de horarios, que luego vamos convertir en un solo array
     var horariosDeCadaRestaurante = [];
     //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        horariosDeCadaRestaurante.push(this.restaurantes[i].horarios);
-    }
+    horariosDeCadaRestaurante = this.restaurantes.map(restaurant => restaurant.horarios);
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
     var horarios = [];
