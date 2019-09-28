@@ -1,9 +1,10 @@
 
 var expect = chai.expect;
 
+// Variables Globales para testear
 var restauranteTest = null;
 var listadoTest = null;
-
+var reservasTest = [];
 
 describe('Tests para la clase restaurant', function () {
   // Inicializar un Listado desde cero
@@ -271,5 +272,55 @@ describe('Tests para la clase Listado', function() {
 
 });
 
+describe('Tests para la clase reserva', function() {
+  beforeEach(function() {
+    // Recordar que el mes, hora, minutos, segundos empiezan desde 0
+    // El dia empieza desde 1
+    var reserva1 = new Reserva(new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"); // Descuento por grupo grande y codigo
+    var reserva2 = new Reserva(new Date(2018, 7, 27, 14, 100), 2, 150, "DES200"); // Descuento por codigo
+    var reserva3 = new Reserva(new Date(2019, 9, 7, 11, 59), 2, 500, "DES15"); // Descuento por codigo
+    var reserva4 = new Reserva(new Date(2019, 9, 7, 13, 01), 10, 100, ''); // Descuento por grupo grande
+    var reserva5 = new Reserva(new Date(2019, 9, 6, 19, 0), 4, 250, ''); // Descuento por grupo grande y adicional por fin de semana
+    var reserva6 = new Reserva(new Date(2019, 9, 6, 20, 0), 4, 250, ''); // Descuento por grupo grande y adicional por fin de semana
+    var reserva7 = new Reserva(new Date(2019, 9, 7, 12, 0), 1, 1000, ''); // Adicional por franja horaria
+    var reserva8 = new Reserva(new Date(2019, 9, 7, 13, 0), 1, 1000, ''); // Adicional por franja horaria
+    var reserva9 = new Reserva(new Date(2019, 9, 7, 18, 59), 1, 500, ''); // Sin modificaciones
+    var reserva0 = new Reserva(new Date(2019, 9, 7, 20, 01), 1, 500, ''); // Sin modificaciones
+    reservasTest = [reserva1, reserva2, reserva3, reserva4, reserva5, 
+                    reserva6, reserva7, reserva8, reserva9, reserva0];
+   });
 
+  describe('Tests para la funcion calcularPrecioBase', function() {
+    it('Devuelve el precio base', function() {
+      // ARRANGE
+      var preciosEsperados = [2800, 300, 1000, 1000, 1000, 
+                              1000, 1000, 1000, 500, 500];
+      var preciosActuales = [];      
+
+      // ACT
+      preciosActuales = reservasTest.map(reserva => reserva.calcularPrecioBase());
+
+      // ASSERT
+      expect(preciosActuales).to.eql(preciosEsperados);
+    });
+  });
+
+  describe('Tests para la funcion calcularPrecioFinal', function() {
+    it('Devuelve el precio final', function() {
+      // ARRANGE
+      /* En la pagina web el precio final de la reserva 1 aparece como $2310, 
+      pero esto es erroneo porque calcula un 5% (que son $140)
+      de descuento de la franja horaria que no deberia */
+      var preciosEsperados = [2450, 100, 850, 850, 1100, 
+                              1100, 1050, 1050, 500, 500];
+      var preciosActuales = [];      
+
+      // ACT
+      preciosActuales = reservasTest.map(reserva => reserva.calcularPrecioFinal());
+
+      // ASSERT
+      expect(preciosActuales).to.eql(preciosEsperados);
+    });
+  });
+});
 
