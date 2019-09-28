@@ -40,6 +40,5 @@ Restaurant.prototype.obtenerPuntuacion = function() {
     } else {
         return Math.round(promedio(this.calificaciones) * 10) / 10;
     }
-
 }
 
