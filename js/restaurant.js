@@ -38,8 +38,7 @@ Restaurant.prototype.obtenerPuntuacion = function() {
     if (this.calificaciones.length === 0) {
         return 0;
     } else {
-        var promedio = promedio(this.calificaciones);
-        return Math.round(promedio * 10) / 10;
+        return Math.round(promedio(this.calificaciones) * 10) / 10;
     }
 
 }
