@@ -59,28 +59,28 @@ Listado.prototype.obtenerRubros = function() {
 //Obtiene todos los horarios de los restaurantes (sin repetidos). Está funcionalidad es un poco más compleja ya que un restaurante
 //tiene un array de horarios. Al buscarlos todos vamos a pasar a tener un array de arrays que luego vamos a tener que 
 //convertir en uno solo
-Listado.prototype.obtH = function() {
+Listado.prototype.obtenerHorarios = function() {
     //En este array se van a cargar los arrays de horarios, que luego vamos convertir en un solo array
-    var arregloH = [];
+    var horariosDeCadaRestaurante = [];
     //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
     for (var i = 0; i < this.restaurantes.length; i++) {
-        arregloH.push(this.restaurantes[i].horarios);
+        horariosDeCadaRestaurante.push(this.restaurantes[i].horarios);
     }
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
-    var h = [];
-    arregloH.forEach(function(a) {
-        a.forEach(function(hor) {
-            h.push(hor)
+    var horarios = [];
+    horariosDeCadaRestaurante.forEach(function(horariosDeUnRestaurante) {
+        horariosDeUnRestaurante.forEach(function(hora) {
+            horarios.push(hora)
         });
     });
 
     //En este arreglo vamos a poner todos los horarios pero sin repetidos
-    var h2 = h.filter(function(elem, index, self) {
-        return index === self.indexOf(elem);
+    var horariosSinRepetirse = horarios.filter(function(hora, indiceDeLaHora, losHorarios) {
+        return indiceDeLaHora === losHorarios.indexOf(hora);
     });
 
-    return h2.sort();
+    return horariosSinRepetirse.sort();
 }
 
 //Función que recibe los filtros que llegan desde el HTML y filtra el arreglo de restaurantes.

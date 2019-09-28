@@ -169,7 +169,7 @@ Aplicacion.prototype.dibujarHorarios = function() {
     this.cargarOpcionDefault("filtro-horario", "Horario");
     this.cargarOpcionTodos("filtro-horario")
 
-    this.listado.obtH().forEach(function(horario) {
+    this.listado.obtenerHorarios().forEach(function(horario) {
         var nuevaOpcion = $("<option/>").text(horario).val(horario);
         nuevaOpcion.appendTo("#filtro-horario");
     });
